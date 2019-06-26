@@ -21,7 +21,6 @@ class FeedlyClient:
         self.client_secret = options.get('client_secret')
         self.access_token = options.get('access_token')
         self.refresh_token = options.get('refresh_token')
-        self.id = options.get('id')
         self.last_fetch = options.get('last_fetch')
         self.my_stream_id1 = options.get('my_stream_id1')
 
