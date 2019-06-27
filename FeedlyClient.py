@@ -47,8 +47,8 @@ class FeedlyClient:
                 self.last_fetch = max(self.last_fetch, item['actionTimestamp'])
                 current_latest = max(current_latest, item['actionTimestamp'])
 
-            print('{} entries fetched, current latest {}!'.format(
-                len(res['items']), datetime.fromtimestamp(current_latest/1000)))
+            #print('{} entries fetched, current latest {}!'.format(
+            #    len(res['items']), datetime.fromtimestamp(current_latest/1000)))
 
             if 'continuation' not in res:
                 break
@@ -59,7 +59,7 @@ class FeedlyClient:
         self.last_fetch += 1
         self._config_update('last_fetch', self.last_fetch)
         print('total {} entries fetched! latest {}'.format(
-            total_fetched, datetime.fromtimestamp(self.last_fetch/1000)))
+            total_fetched, datetime.fromtimestamp(self.last_fetch//1000)))
 
         return total_fetched
 
@@ -103,8 +103,7 @@ class FeedlyClient:
         self.access_token = jr['access_token']
         self._config_update('access_token', self.access_token)
 
-        print('access_token is successfully updated',
-              flush=True, file=sys.stderr)
+        print('access_token is successfully updated', flush=True)
 
     def _config_update(self, entry, updated_value):
         with open(self.file_str, 'r') as f:
