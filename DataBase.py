@@ -46,7 +46,7 @@ class database:
             self.db.create_table(table_str, primary_id='pid')
         self.table = self.db[table_str]
 
-    # pass the full origin response json, the database will do the formatting
+    # pass the origin response json[item], the database will do the formatting
     def insert(self, j):
         assert type(j) == dict
 
