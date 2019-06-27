@@ -12,6 +12,7 @@ Python 3, requests, pandas, numpy (pandas and numpy are used to flatten json).
 ## Usage 
 
 1. Download the source files. 
+
 2. Create a *config.json* file, which contains your secret tokens and looks like 
 ```json
 {
@@ -50,6 +51,7 @@ full response (json) -> response['items'] (list) -> item (json)
 ```
 - The `DataBase.insert` method is responsible to format the `item-json` and store that into 
 the database. 
+
 - Each `item` is a saved article with many metadata. 
 
 4. The script supports automatically renew `access_token` through `refresh_token` when it is expired. 
