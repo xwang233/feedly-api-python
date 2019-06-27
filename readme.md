@@ -2,6 +2,9 @@
 
 This is a Python script that I used to fetch my saved articles (now Boards) on feedly.com. 
 
+I referred to many design patterns from [python-feedly](https://github.com/axsapronov/python-feedly). 
+Many thanks! 
+
 ## Prerequisites 
 
 Python 3, requests, pandas, numpy (pandas and numpy are used to flatten json). 
@@ -49,9 +52,11 @@ full response (json) -> response['items'] (list) -> item (json)
 the database. 
 - Each `item` is a saved article with many metadata. 
 
-4. Run `python3 main.py`. Wait until the fetch finishes. 
+4. The script supports automatically renew `access_token` through `refresh_token` when it is expired. 
 
-5. Enjoy! File issue or PR if you have any suggestions.
+5. Run `python3 main.py`. Wait until the fetch finishes. 
+
+6. Enjoy! File issue or PR if you have any suggestions.
 
 ## License 
 
