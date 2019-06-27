@@ -49,7 +49,7 @@ full response (json) -> response['items'] (list) -> item (json)
 the database. 
 - Each `item` is a saved article with many metadata. 
 
-4. Run `python3 main.py`. Wait until the fetch finish. 
+4. Run `python3 main.py`. Wait until the fetch finishes. 
 
 5. Enjoy! File issue or PR if you have any suggestions.
 
