@@ -6,6 +6,7 @@ import time
 import random
 from datetime import datetime
 
+import sendmail
 
 class FeedlyClient:
     def __init__(self, file_str, db, *args, **kwargs):
@@ -75,7 +76,8 @@ class FeedlyClient:
         try:
             r.raise_for_status()
         except:
-            print(r.json(), flush=True, file=sys.stderr)
+            print(r.content, flush=True, file=sys.stderr)
+            sendmail.send(subject='Feedly client exception at _get', body=r.content)
             raise
 
         return r.json()
@@ -96,7 +98,8 @@ class FeedlyClient:
         try:
             r.raise_for_status()
         except:
-            print(r.json(), flush=True, file=sys.stderr)
+            print(r.content, flush=True, file=sys.stderr)
+            sendmail.send(subject='Feedly client exception at _renew_access_token', body=r.content)
             raise
 
         jr = r.json()

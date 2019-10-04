@@ -4,6 +4,9 @@ import dataset
 import threading
 from numpy import int64
 
+import sendmail
+import traceback
+
 
 def serialize_list(j):
     jcp = {}
@@ -48,13 +51,22 @@ class database:
 
     # pass the origin response json[item], the database will do the formatting
     def insert(self, j):
-        assert type(j) == dict
+        try:
+            assert type(j) == dict
 
-        def insert_thread():
-            flatten_j = flatten(j)
-            self.table.insert(flatten_j)
+            def insert_thread():
+                flatten_j = flatten(j)
+                self.table.insert(flatten_j)
 
-        #t = threading.Thread(target = insert_thread)
-        # t.start()
+            #t = threading.Thread(target = insert_thread)
+            # t.start()
 
-        insert_thread()
+            insert_thread()
+        except: 
+            s = traceback.format_exc()
+            sendmail.send(subject = 'Feedly Client Database.insert exception', 
+                    body = json.dumps({
+                        'exception': s, 
+                        'j': j
+                        }, ensure_ascii = False, indent = 4))
+
